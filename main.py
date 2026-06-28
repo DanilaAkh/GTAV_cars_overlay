@@ -1,12 +1,12 @@
 import cv2
 import numpy as np
-import easyocr
+from easyocr import Reader
 
 
 def select_row(img_name: str) -> np.array:
     """
     Функция поиска наиболее "яркой" строки.
-    
+
     Parameters
     ----------
     img_name : строка с именем изображения
@@ -35,7 +35,7 @@ def select_row(img_name: str) -> np.array:
     return crop
 
 
-reader = easyocr.Reader(['en'], gpu=False)
+reader = Reader(['en'], gpu=False)
 img_name = "menu.png"
 crop = select_row(img_name)
 result = reader.readtext(crop)
