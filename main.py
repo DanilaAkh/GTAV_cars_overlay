@@ -57,7 +57,13 @@ with MSS() as sct:
         crop = np.array(screenshot)[:, :, :3]   # Избавляемся от BGRA, делаем (400, 400, 3)        
         crop = select_row(crop)
         result = reader.readtext(crop)
-        print(result[0][1])
+
+        # проверка, что текст был найден:
+        if len(result) == 0:
+            print("К сожалению, текст не был найден")
+        else:
+            print(result[0][1])
+            
         time.sleep(1)
         
     print("Остановлено по Ctrl+Q")
