@@ -20,6 +20,7 @@ def select_row(img: np.array) -> np.array:
     """
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     # cv2.imwrite("gray_img.png", gray)
+
     # Средняя яркость каждой строки
     row_mean = gray.mean(axis=1)
 
@@ -45,17 +46,15 @@ def stop_script():
 
 # Регистрируем горячую клавишу (например, Ctrl+Q)
 keyboard.add_hotkey('ctrl+q', stop_script)
-
-
 reader = Reader(['en'], gpu=False)
 
+# Основной цикл программы
 with MSS() as sct:
     monitor = {"top": 0, "left": 0, "width": 400, "height": 500}
     while not stop_flag:
 
-        screenshot = sct.grab(monitor)  # Возвращает формат (400, 400, 4) BGRA
-        crop = np.array(screenshot)[:, :, :3]
-        # Избавляемся от BGRA, делаем (400, 400, 3)
+        screenshot = sct.grab(monitor)          # Возвращает формат (400, 400, 4) BGRA
+        crop = np.array(screenshot)[:, :, :3]   # Избавляемся от BGRA, делаем (400, 400, 3)        
         crop = select_row(crop)
         result = reader.readtext(crop)
         print(result[0][1])
