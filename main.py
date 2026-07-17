@@ -53,8 +53,8 @@ with MSS() as sct:
     monitor = {"top": 0, "left": 0, "width": 400, "height": 500}
     while not stop_flag:
 
-        screenshot = sct.grab(monitor)          # Возвращает формат (400, 400, 4) BGRA
-        crop = np.array(screenshot)[:, :, :3]   # Избавляемся от BGRA, делаем (400, 400, 3)        
+        screenshot = sct.grab(monitor)          # Возвращает формат (400, 500, 4) BGRA
+        crop = np.array(screenshot)[:, :, :3]   # Избавляемся от BGRA, делаем (400, 500, 3)        
         crop = select_row(crop)
         result = reader.readtext(crop)
 
