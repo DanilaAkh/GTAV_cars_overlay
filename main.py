@@ -1,5 +1,5 @@
 import time
-
+import cv2
 import keyboard
 import numpy as np
 from easyocr import Reader
@@ -24,23 +24,26 @@ def main():
 
     reader = Reader(["en"], gpu=False)
 
-    monitor = {
-        "top": 0,
-        "left": 0,
-        "width": 1000,
-        "height": 1000,
-    }
 
     print("Скрипт запущен. Для остановки нажмите Ctrl+Q.")
 
     with MSS() as sct:
+        monitor = sct.monitors[1]
+        width = monitor['width']
+        height = monitor['height']
+        monitor = {
+            "top": 0,
+            "left": 0,
+            "width": int(width * 1/3),
+            "height": int(height * 1/2)
+        }
         while not stop_flag:
             screenshot = sct.grab(monitor)
 
             # BGRA -> BGR
             image = np.array(screenshot)[:, :, :3]
 
-            # cv2.imwrite("menu_image.png", image)
+            cv2.imwrite("menu_image.png", image)
 
             process_image(reader, image)
 
