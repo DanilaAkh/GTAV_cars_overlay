@@ -34,6 +34,6 @@ def insertBLOB(carId, name, photo):
         #     sqliteConnection.close()
         print("the sqlite connection is closed")
 
-insertBLOB('1', 'Turismo R', './Turismo_R.png' )
+# insertBLOB('1', 'Turismo R', './Turismo_R.png' )
 
 
