@@ -50,5 +50,6 @@ def process_image(reader: Reader, image: np.ndarray) -> None:
 
     if not result:
         print("Текст не был найден")
+        return None
     else:
-        print(result[0][1])
+        return result[0][1]

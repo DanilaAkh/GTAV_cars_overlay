@@ -6,7 +6,7 @@ from easyocr import Reader
 from mss import MSS
 
 from utils import process_image
-
+from show_img import show_img
 # Глобальный флаг остановки
 stop_flag = False
 
@@ -45,7 +45,9 @@ def main():
 
             # cv2.imwrite("menu_image.png", image)
 
-            process_image(reader, image)
+            car = process_image(reader, image)
+            
+            show_img(car)
 
             time.sleep(1)
 
