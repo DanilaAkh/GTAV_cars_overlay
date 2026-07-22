@@ -43,7 +43,7 @@ def main():
             # BGRA -> BGR
             image = np.array(screenshot)[:, :, :3]
 
-            cv2.imwrite("menu_image.png", image)
+            # cv2.imwrite("menu_image.png", image)
 
             process_image(reader, image)
 
