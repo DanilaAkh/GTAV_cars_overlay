@@ -29,7 +29,7 @@ def select_row(img: np.ndarray) -> np.ndarray:
 
     # Центр яркой области
     y = int(rows.mean())
-    print(y)
+
     # Высота пункта меню
     item_height = 35
 
