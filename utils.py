@@ -29,7 +29,7 @@ def select_row(img: np.ndarray) -> np.ndarray:
 
     # Центр яркой области
     y = int(rows.mean())
-
+    print(y)
     # Высота пункта меню
     item_height = 35
 
@@ -38,6 +38,7 @@ def select_row(img: np.ndarray) -> np.ndarray:
         20:500                                  # ширина
     ]
     # cv2.imwrite("selected_row.png", crop)
+    
     return crop
 
 
